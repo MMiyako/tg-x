@@ -1,0 +1,20 @@
+{
+    "name": "tg-x",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "esbuild src/generator.js --outfile=js/generator.js --bundle",
+        "watch": "esbuild src/generator.js --outfile=js/generator.js --bundle --watch",
+        "production": "esbuild src/generator.js --outfile=js/generator.js --bundle --minify"
+    },
+    "type": "module",
+    "author": "MMiyako",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^1.6.8"
+    },
+    "devDependencies": {
+        "esbuild": "0.20.2"
+    }
+}
