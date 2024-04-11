@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Generator</title>
+        <link rel="stylesheet" href="css/generator.css" />
+        <script src="js/generator.js" defer></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="mode">
+                <button>Normal Mode</button>
+                <button>Japanese Mode</button>
+            </div>
+            <div id="info">
+                <div>
+                    <label for="link">Link</label>
+                    <input id="link" type="text" />
+                    <button id="link-increment">+1</button>
+                </div>
+                <div>
+                    <label for="category">Category</label>
+                    <input class="category" type="text" />
+                    <button id="add-category">Add</button>
+                </div>
+                <div>
+                    <label for="artist">Artist</label>
+                    <input class="artist" type="text" />
+                    <button id="add-artist">Add</button>
+                </div>
+                <div>
+                    <label for="site">Site</label>
+                    <input class="site" type="text" />
+                </div>
+                <div>
+                    <label for="site-id">ID</label>
+                    <input class="site-id" type="text" />
+                </div>
+                <div>
+                    <label for="extra-info">Extra Info</label>
+                    <input class="extra-info" type="text" />
+                </div>
+                <div>
+                    <button id="generate">Generate</button>
+                </div>
+            </div>
+            <div id="result"></div>
+        </div>
+    </body>
+</html>

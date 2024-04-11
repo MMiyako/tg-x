@@ -1,0 +1,72 @@
+* {
+    font-family: 'Futara', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fafafa;
+    color: #222;
+    margin: 0;
+}
+
+button {
+    border-radius: 0;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+#wrapper {
+    margin: 10px;
+    max-width: 500px;
+}
+
+.mode {
+    margin: 10px 0;
+}
+
+input {
+    padding: 5px;
+    border-radius: 0;
+    border: 1px solid #b0b0b0;
+    background-color: #fafafa;
+}
+
+input.error {
+    border-color: red;
+    background-color: #ffebeb;
+}
+
+#info {
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+#info>div {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    margin: 5px;
+}
+
+#info>div>label {
+    text-align: right;
+    grid-column: 1 / 2;
+    font-size: smaller;
+    margin-right: 10px;
+    align-self: center;
+}
+
+#info>div>input {
+    grid-column: 2 / 6;
+}
+
+#info>div>#generate {
+    margin: 15px 0 5px 0;
+    padding: 5px;
+    grid-column: 1 / 7;
+}
+
+#result {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 10px;
+}
