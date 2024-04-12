@@ -12,6 +12,7 @@ button {
     border-radius: 0;
     padding: 5px 10px;
     font-size: 0.8rem;
+    border: 1px solid #cacaca;
 }
 
 #wrapper {
@@ -21,6 +22,14 @@ button {
 
 .mode {
     margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mode button.active {
+    color: #FFF;
+    background-color: #0d2d54;
+    border-color: #041c39;
 }
 
 input {
@@ -63,6 +72,10 @@ input.error {
     margin: 15px 0 5px 0;
     padding: 5px;
     grid-column: 1 / 7;
+}
+
+#info>#block-code.hide {
+    display: none;
 }
 
 #result {
