@@ -1,5 +1,5 @@
 * {
-    font-family: 'Futara', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', "Noto Sans JP", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -9,15 +9,37 @@ body {
 }
 
 button {
-    border-radius: 0;
     padding: 5px 10px;
-    font-size: 0.8rem;
+    font-size: 12px;
     border: 1px solid #cacaca;
+}
+
+code {
+    font-family: "Cascadia Code", monospace;
+    padding: 2px 5px;
+    margin: 0;
+    font-size: 12px;
+    background-color: #dedede;
+    overflow-wrap: break-word;
+}
+
+table,
+th,
+td {
+    border: 1px solid #cacaca;
+    border-collapse: collapse;
+    padding: 2px 8px;
+}
+
+th {
+    font-weight: normal;
+    text-align: left;
+    background-color: #f0f0f0;
 }
 
 #wrapper {
     margin: 10px;
-    max-width: 500px;
+    max-width: 550px;
 }
 
 .mode {
@@ -33,10 +55,10 @@ button {
 }
 
 input {
-    padding: 5px;
-    border-radius: 0;
+    padding: 5px 8px;
     border: 1px solid #b0b0b0;
     background-color: #fafafa;
+    outline: none;
 }
 
 input.error {
@@ -69,7 +91,7 @@ input.error {
 }
 
 #info>div>#generate {
-    margin: 15px 0 5px 0;
+    margin-top: 10px;
     padding: 5px;
     grid-column: 1 / 7;
 }
@@ -82,4 +104,109 @@ input.error {
     background-color: #f0f0f0;
     padding: 20px;
     margin-top: 10px;
+    font-size: 14px;
+}
+
+.tags {
+    margin: 10px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.tag {
+    display: inline-flex;
+    margin: 5px;
+}
+
+.tag div {
+    padding: 2px 8px;
+    background: #f0f0f0;
+    border: 1px solid #cacaca;
+    font-size: 12px;
+    cursor: default;
+    font-family: "Cairo", "Noto Sans JP";
+    transition: all 100ms;
+}
+
+.tag div:nth-child(1) {
+    width: 120px;
+}
+
+.tag div:nth-child(2) {
+    border-left: none;
+    background-color: #dedede;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag:hover div {
+    color: #FFF;
+    background-color: #0d2d54;
+    border-color: #041c39;
+}
+
+.tag:hover div:nth-child(2) {
+    color: #FFF;
+    background-color: #0db58e;
+    border-color: #041c39;
+}
+
+.tag .copy-markup {
+    position: absolute;
+    width: 120px;
+    color: #FFF;
+    background-color: #0d2d54;
+    border-color: #041c39;
+}
+
+#panel-tags {
+    margin: 10px 0;
+    position: relative;
+}
+
+#panel-tags .help-info {
+    font-size: 12px;
+    line-height: 25px;
+    position: absolute;
+    top: 40px;
+    padding: 10px 20px 20px 25px;
+    background-color: #fafafa;
+    border: 2px solid #041c39;
+    box-shadow: 0 0 10px #78b6e8;
+    z-index: 100;
+}
+
+#panel-tags .help-info.hide {
+    display: none;
+}
+
+#panel-tags .help-info p {
+    margin: 5px 0 10px 0;
+}
+
+#panel-tags .help {
+    border-left: none;
+}
+
+#panel-tags .help.active {
+    outline: 2px solid #041c39;
+    box-shadow: 0 0 10px #78b6e8;
+}
+
+#panel-tags .header {
+    display: flex;
+}
+
+#panel-tags .header input {
+    flex: 1;
+}
+
+#panel-tags .tags-count {
+    color: #696969;
+    font-size: 12px;
+    font-style: italic;
+    margin: 10px 0 5px 0;
+    text-align: right;
 }

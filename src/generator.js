@@ -1,8 +1,97 @@
 import axios from "axios";
+import Fuse from "fuse.js";
 
 (async () => {
     let configResponse = await axios.get("data/config.json");
     let config = configResponse.data;
+
+    let tagsResponse = await axios.get("data/hashtags.group.json");
+    let tags = tagsResponse.data;
+
+    let fuseOptions = {
+        includeScore: false,
+        useExtendedSearch: true,
+        keys: ["hashtag"],
+    };
+
+    let fuse = new Fuse(tags, fuseOptions);
+
+    let $search = document.getElementById("search");
+    let $tags = document.querySelector(".tags");
+
+    showTopTags();
+
+    $search.addEventListener("input", (e) => {
+        showTags(e.target.value);
+    });
+
+    function copyTag() {
+        let $allTags = document.querySelectorAll(".tag");
+
+        $allTags.forEach(($tag) => {
+            $tag.addEventListener("click", () => {
+                let tag = $tag.firstChild.innerText;
+                navigator.clipboard.writeText(tag);
+
+                let $div = document.createElement("div");
+
+                $div.innerHTML = "Copied";
+                $div.classList.add("copy-markup");
+
+                $tag.appendChild($div);
+
+                setTimeout(function () {
+                    $div.remove();
+                }, 1000);
+            });
+        });
+    }
+
+    function showTopTags() {
+        $tags.innerHTML = `<li class="tags-count">Total: ${tags.length}</li>`;
+
+        for (let i = 0; i < 30; i++) {
+            let $li = document.createElement("li");
+
+            $li.innerHTML = `<div>${tags[i].hashtag}</div><div>${tags[i].count}</div>`;
+            $li.classList.add("tag");
+
+            $tags.appendChild($li);
+        }
+
+        copyTag();
+    }
+
+    function showTags(search) {
+        $tags.innerHTML = "";
+
+        if (search) {
+            let result = fuse.search(search);
+
+            $tags.innerHTML = `<li class="tags-count">Result: ${result.length} / ${tags.length}</li>`;
+
+            result.forEach((obj) => {
+                let $li = document.createElement("li");
+
+                $li.innerHTML = `<div>${obj.item.hashtag}</div><div>${obj.item.count}</div>`;
+                $li.classList.add("tag");
+
+                $tags.appendChild($li);
+            });
+
+            copyTag();
+        } else {
+            showTopTags();
+        }
+    }
+
+    let $help = document.querySelector("#panel-tags .help");
+
+    $help.addEventListener("click", () => {
+        let $helpInfo = document.querySelector("#panel-tags .help-info");
+        $helpInfo.classList.toggle("hide");
+        $help.classList.toggle("active");
+    });
 
     let mode = "normal";
     let $normalMode = document.getElementById("normal-mode");
