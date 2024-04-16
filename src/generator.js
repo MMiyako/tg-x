@@ -133,11 +133,18 @@ import Fuse from "fuse.js";
         $newCategory.innerHTML = `
             <label for="category">Category</label>
             <input class="category" type="text" />
+            <button class="remove-block">Remove</button>
         `;
 
         let $categoryDiv = $addCategory.parentNode;
 
         $categoryDiv.parentNode.insertBefore($newCategory, $categoryDiv.nextSibling);
+
+        let $removeBlock = $newCategory.querySelector(".remove-block");
+
+        $removeBlock.addEventListener("click", () => {
+            $newCategory.remove();
+        });
     });
 
     let $addArtist = document.getElementById("add-artist");
@@ -147,11 +154,18 @@ import Fuse from "fuse.js";
         $newArtist.innerHTML = `
             <label for="artist">Artist</label>
             <input class="artist" type="text" />
+            <button class="remove-block">Remove</button>
         `;
 
         let $artistDiv = $addArtist.parentNode;
 
         $artistDiv.parentNode.insertBefore($newArtist, $artistDiv.nextSibling);
+
+        let $removeBlock = $newArtist.querySelector(".remove-block");
+
+        $removeBlock.addEventListener("click", () => {
+            $newArtist.remove();
+        });
     });
 
     let $generate = document.getElementById("generate");
