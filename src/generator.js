@@ -233,6 +233,26 @@ import Fuse from "fuse.js";
         });
 
         // Site & ID
+        if ($site.value) {
+            let site = $site.value;
+            for (let key in config.siteParser) {
+                if (site.includes(config.siteParser[key])) {
+                    $site.value = key;
+
+                    let urlParams = new URLSearchParams(site);
+                    for (let [key, value] of urlParams.entries()) {
+                        if (value) {
+                            $siteID.value = value;
+                        } else {
+                            $siteID.value = key.split("/").pop();
+                        }
+                    }
+
+                    break;
+                }
+            }
+        }
+
         if ($site.value && $siteID.value) {
             site = `<br/><br/>${$site.value.hashtag()} \`${$siteID.value}\``;
         }
