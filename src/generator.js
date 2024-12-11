@@ -229,7 +229,11 @@ import Fuse from "fuse.js";
 
         // Artist
         $artists.forEach(($artist) => {
-            artists += $artist.value.hashtag() + " ";
+            let artist = $artist.value;
+            artist = artist.hashtag() + " ";
+            artist = artist.replaceAll(",", " #");
+            artist = artist.replaceAll("&", " #");
+            artists += artist;
         });
 
         // Site & ID
