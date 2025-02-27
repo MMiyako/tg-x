@@ -193,6 +193,15 @@ import Fuse from "fuse.js";
         }
     });
 
+    let $clearSearch = document.getElementById("clear-search");
+
+    $clearSearch.addEventListener("click", () => {
+        let input = document.querySelector("#search");
+        input.value = "";
+        input.focus();
+        showTopTags();
+    });
+
     function generate() {
         let link = "";
         let categories = "";

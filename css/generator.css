@@ -186,7 +186,8 @@ input.error {
     margin: 5px 0 10px 0;
 }
 
-#panel-tags .help {
+#panel-tags .help,
+#panel-tags #clear-search {
     border-left: none;
 }
 
