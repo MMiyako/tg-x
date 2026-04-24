@@ -14,6 +14,10 @@ button {
     border: 1px solid #cacaca;
 }
 
+button:hover {
+    background-color: #d6d6d6;
+}
+
 code {
     font-family: "Cascadia Code", monospace;
     padding: 2px 5px;
@@ -39,7 +43,7 @@ th {
 
 #wrapper {
     margin: 10px;
-    max-width: 550px;
+    max-width: 650px;
 }
 
 .mode {
@@ -73,27 +77,38 @@ input.error {
 
 #info>div {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 5px;
     margin: 5px;
 }
 
 #info>div>label {
-    text-align: right;
     grid-column: 1 / 2;
+    text-align: right;
     font-size: smaller;
     margin-right: 10px;
     align-self: center;
 }
 
 #info>div>input {
-    grid-column: 2 / 6;
+    grid-column: 2 / 7;
+}
+
+#info>div>button {
+    grid-column: 7 / 7;
+}
+
+#info>div>span {
+    grid-column: 8 / 8;
+    text-align: center;
+    font-size: smaller;
+    align-self: center;
 }
 
 #info>div>#generate {
     margin-top: 10px;
     padding: 5px;
-    grid-column: 1 / 7;
+    grid-column: 1 / 9;
 }
 
 #info>#block-code.hide {

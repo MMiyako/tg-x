@@ -123,6 +123,8 @@ import Fuse from "fuse.js";
                 link = link.substring(config.prefixLink.length);
             }
             $link.value = +link + 1;
+
+            $link.dispatchEvent(new Event("input"));
         }
     });
 
@@ -202,6 +204,47 @@ import Fuse from "fuse.js";
         showTopTags();
     });
 
+    const trackList = [
+        { input: "#link", timer: "#link-timer" },
+        { input: ".category", timer: "#category-timer" },
+        { input: ".artist", timer: "#artist-timer" },
+        { input: ".code", timer: "#code-timer" },
+        { input: ".site", timer: "#site-timer" },
+        { input: ".site-id", timer: "#site-id-timer" },
+    ];
+
+    const states = [];
+
+    trackList.forEach((item, index) => {
+        const inputEl = document.querySelector(item.input);
+        const timerEl = document.querySelector(item.timer);
+
+        if (!inputEl || !timerEl) return;
+
+        states[index] = {
+            value: 0,
+            element: timerEl,
+        };
+
+        inputEl.addEventListener("input", () => {
+            states[index].value = 0;
+            updateUI(states[index].element, 0);
+        });
+    });
+
+    setInterval(() => {
+        states.forEach((state) => {
+            if (state.value < 999) {
+                state.value++;
+                updateUI(state.element, state.value);
+            }
+        });
+    }, 1000);
+
+    function updateUI(el, val) {
+        el.textContent = val;
+    }
+
     function generate() {
         let link = "";
         let categories = "";
@@ -269,6 +312,9 @@ import Fuse from "fuse.js";
                             $siteID.value = key.split("/").pop();
                         }
                     }
+
+                    $site.dispatchEvent(new Event("input"));
+                    $siteID.dispatchEvent(new Event("input"));
 
                     break;
                 }
