@@ -238,11 +238,20 @@ import Fuse from "fuse.js";
 
         // Artist
         $artists.forEach(($artist) => {
-            let artist = $artist.value;
-            artist = artist.hashtag() + " ";
-            artist = artist.replaceAll(",", " #");
-            artist = artist.replaceAll("&", " #");
-            artists += artist;
+            let val = $artist.value;
+
+            val = val.replace(/\band\b/gi, "|");
+            val = val.replace(/&/g, "|");
+            val = val.replace(/,/g, "|");
+
+            let parts = val.split("|");
+
+            parts.forEach((part) => {
+                let trimmed = part.trim();
+                if (trimmed.length > 0) {
+                    artists += trimmed.hashtag() + " ";
+                }
+            });
         });
 
         // Site & ID
